@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="c71e3fba-febe-4857-baee-36c24de9a2d3" basePath="/api/sys/v1" >
+		<http:request-connection host="localhost" port="8081" />
+	</http:request-config>
+	<sub-flow name="postOrganizationsSubFlow" doc:id="0c653d08-6a9e-4811-8b98-82d03036fa67" >
+		<logger level="INFO" doc:name="post Organizations start Logger" doc:id="58898dd5-6579-4fe4-9610-dd1c2e773b55" message="post Organizations flow started"/>
+		<http:request method="POST" doc:name="Request" doc:id="234798be-79c3-481f-9df0-4a6372e4866e" config-ref="HTTP_Request_configuration" url="/organizations"/>
+		<logger level="INFO" doc:name="post Organizations flow end Logger" doc:id="a606e081-1cdb-4c98-b87a-fbf700629393" message="post Organizations flow ended"/>
+	</sub-flow>
+</mule>
